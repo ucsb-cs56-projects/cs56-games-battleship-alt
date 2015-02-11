@@ -15,5 +15,7 @@ The code can also be found at these links
 project history
 ===============
 ```
- N/A
+
+YES | mastergberry | An alternative version of Battleship.
+
 ```
