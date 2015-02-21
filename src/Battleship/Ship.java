@@ -83,9 +83,15 @@ public class Ship {
 	}
 
 	public void clearship() {
+
 		switch (this.dir) {
 		case 0: {
-			if (!this.invalid)
+			if (!this.invalid) {
+				
+				for (int k = 0;k < 5; k++) 
+					if (Battleship.filledShip[k] != null && Battleship.filledShip[k].i==x1 && Battleship.filledShip[k].j==y1 && Battleship.filledShip[k].dir ==0)
+						Battleship.filledShip[k] = null;
+
 				for (j = this.y1; j < this.y2; j++) {
 					Battleship.getPlayers(Battleship.getYou()).setBboard(
 							this.x1, j, null);
@@ -94,10 +100,15 @@ public class Ship {
 					Battleship.getPlayers(Battleship.getYou()).setWhatShip(
 							this.x1, j, " ");
 				}
+			}
 		}
 			break;
 		case 1: {
-			if (!this.invalid)
+			if (!this.invalid) {
+				for (int k = 0;k < 5; k++) 
+					if (Battleship.filledShip[k] != null && Battleship.filledShip[k].i==x1 && Battleship.filledShip[k].j==y1 && Battleship.filledShip[k].dir==1)
+						Battleship.filledShip[k] = null;
+				
 				for (i = this.x1; i < this.x2; i++) {
 					Battleship.getPlayers(Battleship.getYou()).setBboard(i,
 							this.y1, null);
@@ -106,6 +117,7 @@ public class Ship {
 					Battleship.getPlayers(Battleship.getYou()).setWhatShip(i,
 							this.y1, " ");
 				}
+			}
 		}
 			break;
 		}

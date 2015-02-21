@@ -469,7 +469,7 @@ public class Battleship extends JFrame {
 				Ship boat = new Ship(ships[sindex], dindex, players[you]
 						.getBoats(sindex).getLength(), players[you].getBoats(
 						sindex).getX(), players[you].getBoats(sindex).getY());
-				//players[you].getBoats(sindex).clearship();
+				players[you].getBoats(sindex).clearship();
 				players[you].setBoats(sindex, boat);
 				players[you].getBoats(sindex).placeship();
 			}
@@ -504,8 +504,7 @@ public class Battleship extends JFrame {
 						if (source == players[you].getBboard(i, j)) {
 							if (!useOfShip[sindex]) useOfShip[sindex] = true;
 							
-							//TODO 我TM终于找到了！这坑爹设置图的地方
-							
+							//TODO 
 							players[you].setBoats(sindex, new Ship(
 									ships[sindex], dindex, length, i, j));// display
 																			// ship's

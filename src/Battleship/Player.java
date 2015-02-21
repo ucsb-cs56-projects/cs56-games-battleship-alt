@@ -300,8 +300,6 @@ public class Player {
 																	// File(srcImageFile));
 			int srcHeight = bi.getHeight(); // 婧愬浘瀹藉害
 			int srcWidth = bi.getWidth(); // 婧愬浘楂樺害
-			System.out.println("srcWidth:" + srcWidth);
-			System.out.println("srcHeight:" + srcHeight);
 
 			int destWidth, destHeight;
 
