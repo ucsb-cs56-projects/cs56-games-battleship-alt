@@ -16,7 +16,7 @@ public class BattleshipClient {
 	PrintWriter out = null;
 	BufferedReader in = null;
 		
-	public BattleshipClient () throws IOException {
+	public BattleshipClient () {
 		
 		int i,j;
 		
