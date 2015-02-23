@@ -68,7 +68,7 @@ public class Battleship extends JFrame {
 																// ship
 	ServerSocket serverSocket = null;
 	private JPanel msgboard;
-	public static JLabel westUserMsg = new JLabel(), eastUserMsg = new JLabel();
+	public static JLabel westUserMsg = new JLabel("~~~"), eastUserMsg = new JLabel("~~~");
 	
 	public Battleship() {
 		setTitle("WELCOME TO BATTLESHIP!!!!");
@@ -978,7 +978,6 @@ public class Battleship extends JFrame {
 				player1Socket = new Socket(connectTo, 22222);
 				break;
 			} catch (UnknownHostException e1) {
-				//TODO
 				JOptionPane.showMessageDialog(null, "Unknown host: " + e1.getMessage(),
 						"Bad host",
 						JOptionPane.ERROR_MESSAGE);
@@ -1215,7 +1214,6 @@ public class Battleship extends JFrame {
 			if (r == 0) {
 				msgboard = new JPanel();
 				msgboard.setLayout(new BorderLayout());
-				//TODO
 				msgboard.add(eastUserMsg,BorderLayout.EAST);
 				msgboard.add(westUserMsg,BorderLayout.WEST);
 				
@@ -1348,13 +1346,16 @@ public class Battleship extends JFrame {
 
 class PortFailedException extends Exception {
 	public PortFailedException() {
-		// TODO Auto-generated constructor stub
+
 		super();
 	}
 
 	public PortFailedException(String string) {
-		// TODO Auto-generated constructor stub
+
 		super(string);
+	}
+	public PortFailedException(Exception e) {
+		super(e);
 	}
 }
 
