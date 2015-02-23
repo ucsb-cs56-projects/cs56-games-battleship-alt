@@ -52,6 +52,8 @@ public class Player {
 	private NumberFormat nf = NumberFormat.getPercentInstance();
 	// private Board games
 	static Image[][] ships = new Image[6][3]; // 0 based indices not used
+	private static int winCount = 0;
+	private static int lostCount = 0;
 
 	public Player(String name) {
 
@@ -162,6 +164,14 @@ public class Player {
 
 	public int getHits() {
 		return this.hits;
+	}
+	
+	public static int lostCount() {
+		return lostCount;
+	}
+	
+	public static  int winCount() {
+		return winCount;
 	}
 
 	public String getAcc() {
@@ -989,7 +999,12 @@ public class Player {
 	}
 
 	public void humanAttack(ActionEvent v) {
+		//TODO
+		
+		Battleship.westUserMsg.setText("Turn");
+		Battleship.eastUserMsg.setText("");
 		if (this.getMove()) {
+			
 			Object source = v.getSource();
 			outer: for (i = 0; i < 10; i++) {
 				for (j = 0; j < 10; j++) {
@@ -1038,6 +1053,7 @@ public class Player {
 					JOptionPane.showMessageDialog(null, "YOU WON!",
 							"It's A Celebration!",
 							JOptionPane.INFORMATION_MESSAGE);
+					winCount++;
 					if (Battleship.soundOn())
 						Sound.victorious.play();
 
@@ -1046,7 +1062,7 @@ public class Player {
 					// +"t that stupid after all!","",JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					JOptionPane.showMessageDialog(null, this.getUser()
-							+ " won!!!", "It's A Celebration" + "!",
+							+ " WON!!!", "It's A Celebration!",
 							JOptionPane.INFORMATION_MESSAGE);
 					if (Battleship.soundOn())
 						Sound.victorious.play();
@@ -1066,6 +1082,8 @@ public class Player {
 	}
 
 	public void compattack() {
+		Battleship.westUserMsg.setText("");
+		Battleship.eastUserMsg.setText("Turn");
 		if (this.getChit())
 			this.scanArea(this.getR(), this.getC());
 		else {
@@ -1155,6 +1173,7 @@ public class Player {
 			if (this.getUser().equals("Computer")) {
 				JOptionPane.showMessageDialog(null, "You Lost!", "Sorry!",
 						JOptionPane.INFORMATION_MESSAGE);
+				lostCount++;
 				if (Battleship.soundOn())
 					Sound.loser.play();
 				// if

@@ -124,7 +124,7 @@ public class Ship {
 	}
 
 	// Method to place the ships
-	// TODO
+
 	public void placeship() {
 		// Graphics2D g2 = (Graphics2D)g;
 		switch (this.dir) {
@@ -160,7 +160,7 @@ public class Ship {
 					for (j = this.y1; j < this.y2; j++) {
 						// public void setBckgrImageboard(int shipName,int
 						// diretion,int clipOrder,int i,int j, Color k)
-						// TODO add filled ship
+
 						Battleship.filledShip[Battleship.getSindex()] = new FilledShip(
 								x1, y1, dir);
 
