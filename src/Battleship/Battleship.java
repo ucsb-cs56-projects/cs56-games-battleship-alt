@@ -640,7 +640,7 @@ public class Battleship extends JFrame {
 				else if (gametype == pvpc) {
 					
 					
-					JLabel msg = new JLabel("Connecting...");
+					final JLabel msg = new JLabel("Connecting...");
 					
 					Thread pvpThread = new Thread(new Runnable() {
 
@@ -1371,3 +1371,4 @@ class FilledShip {
 
 	}
 }
+
