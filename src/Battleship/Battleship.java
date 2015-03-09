@@ -55,7 +55,7 @@ public class Battleship extends JFrame
 				sindex=0,//stores index of array
 				dindex=0;//direction	
 	private static Player players[]=new Player[2];
-	private static JButton deploy=new JButton("GEGIN");
+	private static JButton deploy=new JButton("BEGIN");
 	private static int w=0,a=0,s=0,t=0,e=0;//counters to track the use of all ships
 	private static String[][] shiphit=new String[10][10];
 	private static String user,user2;
