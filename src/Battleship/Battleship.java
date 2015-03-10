@@ -56,7 +56,7 @@ public class Battleship extends JFrame
 				dindex=0;//direction	
 	private static Player players[]=new Player[2];
 	private static JButton deploy=new JButton("BEGIN");
-	private static int w=0,a=0,s=0,t=0,e=0;//counters to track the use of all ships
+	private static int carriers=0,battleships=0,subs=0,destroyers=0,patrols=0;//counters to track the use of all ships
 	private static String[][] shiphit=new String[10][10];
 	private static String user,user2;
 	private static Color[] color={Color.cyan,Color.green,Color.yellow,Color.magenta,
@@ -185,33 +185,33 @@ public class Battleship extends JFrame
 	
 	
 	//variable that determines whether or not a carrier has been placed
-	public static int getW()
+	public static int getCarriers()
 	{
-		return w;	
+		return carriers;	
 	}
 	
 	//variable that determines whether or not a battleship has been placed
-	public static int getA()
+	public static int getBattleships()
 	{
-		return a;	
+		return battleships;	
 	}
 	
 	//variable that determines whether or not a submarine has been placed
-	public static int getS()
+	public static int getSubs()
 	{
-		return s;	
+		return subs;	
 	}
 	
 	//variable that determines whether or not a destroyer has been placed
-	public static int getT()
+	public static int getDestroyers()
 	{
-		return t;	
+		return destroyers;	
 	}
 	
 	//variable that determines whether or not a patrol boat has been placed
-	public static int getE()
+	public static int getPatrols()
 	{
-		return e;	
+		return patrols;	
 	}		
 	
 	public static int getReady()
@@ -552,28 +552,28 @@ public class Battleship extends JFrame
 							switch (sindex)
 							{
 								case 0:	{											
-											if (w==0)
-												w++;														
+											if (carriers==0)
+												carriers++;														
 										}
 								break;						
 								case 1:	{											
-											if (a==0)
-												a++;														
+											if (battleships==0)
+												battleships++;														
 										}
 								break;
 								case 2:	{								
-											if (s==0)								
-												s++;
+											if (subs==0)								
+												subs++;
 										}
 								break;
 								case 3:	{									
-											if (t==0)
-												t++;													
+											if (destroyers==0)
+												destroyers++;													
 										}
 							break;
 							case 4:	{								
-										if (e==0)
-											e++;															
+										if (patrols==0)
+											patrols++;															
 									}
 							break;							
 						}	
@@ -1082,11 +1082,11 @@ public class Battleship extends JFrame
 			JOptionPane.YES_NO_OPTION);
 			if (r==0)
 			{	
-				w=0;
-				a=0;
-				s=0;
-				t=0;
-				e=0;									
+				carriers=0;
+				battleships=0;
+				subs=0;
+				destroyers=0;
+				patrols=0;									
 				d.remove(input);	
                                 
                                 //players[you].
