@@ -72,7 +72,7 @@ public class Battleship extends JFrame
 		setTitle("WELCOME TO BATTLESHIP!!!!");		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setJMenuBar(createMenuBar());
-		setResizable(false);			
+		//setResizable(false);			
 		
 		//gets user to input name
 //		user=JOptionPane.showInputDialog("Please Enter your name.");		
@@ -511,7 +511,7 @@ public class Battleship extends JFrame
 				players[you].setBoats(sindex,boat);
                                 players[you].paintShip(boat);
 				players[you].getBoats(sindex).placeship();			
-			}							
+			}			
 		}
 	}			
 			
@@ -552,32 +552,42 @@ public class Battleship extends JFrame
 							switch (sindex)
 							{
 								case 0:	{											
-											if (carriers==0)
-												carriers++;														
+											if (carriers==0){
+											players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
+												carriers++;
+											}
 										}
 								break;						
 								case 1:	{											
-											if (battleships==0)
-												battleships++;														
+											if (battleships==0){
+											players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
+												battleships++;
+											}
 										}
 								break;
 								case 2:	{								
-											if (subs==0)								
+											if (subs==0){								
+											players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
 												subs++;
+											}
 										}
 								break;
 								case 3:	{									
-											if (destroyers==0)
-												destroyers++;													
+											if (destroyers==0){
+											players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
+												destroyers++;
+											}
 										}
 							break;
 							case 4:	{								
-										if (patrols==0)
-											patrols++;															
+										if (patrols==0){
+										players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
+											patrols++;
+										}
 									}
 							break;							
 						}	
-						players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));//display ship's image here																									
+						//players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));//display ship's image here																									
 						break outer;						
 					}					
 				}
@@ -1248,3 +1258,4 @@ public class Battleship extends JFrame
 		}		//System.out.println("okay");		
 	}
 }	
+
