@@ -10,7 +10,9 @@ import java.io.*;
 import java.net.*;
 
 public class Battleship extends JFrame
-{		
+	{
+	
+			
 	private static JButton ok = new JButton("OK"),//closes stats menu
 						   done =new JButton("Done");//closes options menu
 	private static JFrame statistics= new JFrame("Statistics"),//holds stats
@@ -20,8 +22,12 @@ public class Battleship extends JFrame
 	private static JPanel stats=new JPanel(),//used for stats menu
 						  opts,//used for options menu
 						  inputpanel;//for manually inputting ships
-	private static Container b,c,d;//board and input panel 
+	private static Container b,c,d;          //board and input panel 
 	private JPanel input;//input bar	
+	//static Image logoImage = (new ImageIcon("graphics/logo.gif")).getImage();
+
+	//static Image logoImage = (new ImageIcon("graphics/logo.gif")).getImage();
+
 	private static JMenuItem m,pvp,pvc,cvc,pvpc;//menu items	
 	private static String[] cletters = {" ","A","B","C","D","E","F","G","H","I","J"},
 	//array of letters used for combo boxes
@@ -37,6 +43,7 @@ public class Battleship extends JFrame
 					 first={"Player 1", "Player 2", "Random"};//used for options
 	private JComboBox cshi = new JComboBox(ships),//ships
 					  cdir = new JComboBox(direction);//directions
+	
 	private static JComboBox aiLevel=new JComboBox(level),
 						     shipLayout=new JComboBox(layout),
 							 shipColor=new JComboBox(colors),
@@ -100,8 +107,10 @@ public class Battleship extends JFrame
 		c=getContentPane();
 		d = getContentPane();
 		inputpanel=shipinput();
-		d.add(inputpanel,BorderLayout.NORTH);			
-		pack();		
+		d.add(inputpanel,BorderLayout.WEST);			
+		pack();
+		//setSize( 900,600);
+		
 		setVisible(true);
 		
 	}	
@@ -357,6 +366,9 @@ public class Battleship extends JFrame
 	public JPanel shipinput()
 	{
 		input= new JPanel();
+		input.setBackground(Color.black);
+		input.setLayout( new BoxLayout(input,BoxLayout.Y_AXIS));
+
 		mbar.setText("Select a ship, its front position and direction.");
 		mbar.setFont(new Font("Courier New", Font.BOLD, 14));
 		mbar.setEditable(false);
@@ -371,10 +383,19 @@ public class Battleship extends JFrame
 		cdir.addActionListener(new DirectListener());	
 		input.add(cdir);
 		title = BorderFactory.createTitledBorder("Direction");
-		cdir.setBorder(title);		
+		cdir.setBorder(title);	
+		
+			
+		//static Image logoImage = (new ImageIcon("graphics/logo.gif")).getImage();
+		ImageIcon logoImage = new ImageIcon("graphics/logo.gif");
+
+		input.add(new JLabel(logoImage));
+
 		deploy.setEnabled(false);
 		deploy.addActionListener(new DeployListener());
 		input.add(deploy);//deploy is the key of Begin
+		
+		
 		return input;
 	}	
 	
@@ -382,6 +403,8 @@ public class Battleship extends JFrame
 	public JPanel setBoard(int n)
 	{
 		players[n].setMyBoard(new JPanel(new GridLayout(11,11)));//panel to store board		
+		//players[n].setMyBoard().setBackground(Color.red);
+
 		JTextField k;		
 		for (i=0;i<11;i++)
 		{			
@@ -822,7 +845,7 @@ public class Battleship extends JFrame
 						{
 							b.add(setBoard(you),BorderLayout.CENTER);							
 							deploy.setEnabled(false);
-							d.add(inputpanel,BorderLayout.NORTH);					
+							d.add(inputpanel,BorderLayout.WEST);					
 						}
 						else
 						{
@@ -897,7 +920,7 @@ public class Battleship extends JFrame
 					{
 						b.add(setBoard(you),BorderLayout.CENTER);							
 						deploy.setEnabled(false);
-						d.add(inputpanel,BorderLayout.NORTH);					
+						d.add(inputpanel,BorderLayout.WEST);					
 					}
 					else
 					{
@@ -1247,7 +1270,7 @@ public class Battleship extends JFrame
 						players[enemy]=new Player ("Computer");					
 						b.add(gui.setBoard(you),BorderLayout.CENTER);					
 						inputpanel=gui.shipinput();
-						d.add(inputpanel,BorderLayout.NORTH);			
+						d.add(inputpanel,BorderLayout.WEST);			
 						gui.pack();		
 						gui.repaint();
 					}					
