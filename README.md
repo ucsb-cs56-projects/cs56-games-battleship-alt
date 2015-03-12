@@ -17,6 +17,7 @@ Carrier(5 tiles):
 Destroyer (3 tiles):
 ![Alt text](https://github.com/mohithingorani/cs56-games-battleship-alt/blob/master/graphics/seawolf.gif "Destroyer")
 ![Alt text](https://github.com/mohithingorani/cs56-games-battleship-alt/blob/master/graphics/seawolfv.gif "Destroyer Vertical")
+
 Patrol Boat (2 tiles):
 ![Alt text](https://github.com/mohithingorani/cs56-games-battleship-alt/blob/master/graphics/patrol.gif "Patrol Boat")
 ![Alt text](https://github.com/mohithingorani/cs56-games-battleship-alt/blob/master/graphics/patrolv.gif "Patrol Boat Vertical")
