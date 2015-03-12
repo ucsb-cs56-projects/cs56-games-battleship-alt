@@ -97,7 +97,7 @@ public class Player
 			for (j=0;j<10;j++)
 			{
 				this.bboard[i][j]=new JButton();
-				this.bboard[i][j].setBackground(null);				
+				this.bboard[i][j].setBackground( new Color( 12,26,100));				
 				hitormiss[i][j]=false;
 				this.whatship[i][j]=" ";				
 			}
