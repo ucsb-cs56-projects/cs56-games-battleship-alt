@@ -7,7 +7,8 @@ An alternative version of Battleship.    (Eventually, the two should be refactor
 
 This is a simple GUI Battleship game that allows you to pick five boats and their orientation (horizontal points to left and vertical points upward), then play against a computer. To select a boat, click on the scroll box that says the name of the ship you want to place, then the button that you want to be the head of the ship on the grid (Try not to place ships that go out of bounds as that is causing errors).
 Here are the ships and their appearance:
-Battle Ship (4 tiles):
+
+Battleship (4 tiles):
 ![Alt text](https://github.com/mohithingorani/cs56-games-battleship-alt/blob/master/graphics/battleship.gif "Battleship")
 ![Alt text](https://github.com/mohithingorani/cs56-games-battleship-alt/blob/master/graphics/battleshipv.gif "Battleship Vertical")
 Carrier(5 tiles):
