@@ -70,6 +70,7 @@ public class Player
 		ships[BATTLESHIP][2] = (new ImageIcon("graphics/battleshipv.gif")).getImage();
 		ships[SUBMARINE][2] = (new ImageIcon("graphics/submarinev.gif")).getImage();
 		ships[PATROL][2] = (new ImageIcon("graphics/patrolv.gif")).getImage();
+                Image water = (new ImageIcon("graphics/coolwater.gif")).getImage();
                 
                 user=name;
 		shipsleft=5;
@@ -97,7 +98,7 @@ public class Player
 			for (j=0;j<10;j++)
 			{
 				this.bboard[i][j]=new JButton();
-				this.bboard[i][j].setBackground( new Color( 12,26,100));				
+				this.bboard[i][j].setBackground( new ImageIcon(water));				
 				hitormiss[i][j]=false;
 				this.whatship[i][j]=" ";				
 			}
