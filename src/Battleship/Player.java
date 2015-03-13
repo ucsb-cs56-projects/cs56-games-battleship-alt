@@ -98,7 +98,7 @@ public class Player
 			for (j=0;j<10;j++)
 			{
 				this.bboard[i][j]=new JButton();
-				this.bboard[i][j].setBackground( new ImageIcon(water));				
+				this.bboard[i][j].setIcon( new ImageIcon(water));				
 				hitormiss[i][j]=false;
 				this.whatship[i][j]=" ";				
 			}
