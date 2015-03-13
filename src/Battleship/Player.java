@@ -304,11 +304,11 @@ public class Player
             Image img;   
             ImageFilter cropFilter; 
             String dir = null;
-            // 读取源图像   
+            // Read the source image
             //BufferedImage bi = 
             BufferedImage bi = Player.toBufferedImage(srcImageFile);//ImageIO.read(srcImageFile. new File(srcImageFile));   
-            int  srcHeight= bi.getHeight(); // 源图宽度   
-            int srcWidth = bi.getWidth(); // 源图高度
+            int  srcHeight= bi.getHeight(); // source image height  
+            int srcWidth = bi.getWidth(); // source image width
             System.out.println("srcWidth:"+srcWidth);
             System.out.println("srcHeight:"+srcHeight);
             
@@ -320,11 +320,11 @@ public class Player
             if (Columns > 0 && rows > 0)   
             {   
                 Image image = bi.getScaledInstance(srcWidth, srcHeight, Image.SCALE_DEFAULT);   
-//                destWidth = 300; // 切片宽度   
-//                destHeight = 300; // 切片高度   
-//                int cols = 0; // 切片横向数量   
-//                int rows = 0; // 切片纵向数量   
-                // 计算切片的横向和纵向数量   
+//                destWidth = 300; // Slice width
+//                destHeight = 300; // Slice Height 
+//                int cols = 0; // Number of column slices
+//                int rows = 0; // Number of row slices
+                //    Calculate number of horizontal and vertical slices
                 if (srcWidth % Columns == 0)   
                 {   
                     destWidth = srcWidth/Columns;  
@@ -341,15 +341,15 @@ public class Player
                 {   
                     destHeight = (int) Math.floor(srcHeight/rows) + 1;   
                 }     
-                // 循环建立切片
+                // Number of grid chunks
                 int counts = 0;
                 for (int i = 0; i <  rows; i++)   
                 {   
                     for (int j = 0; j <Columns; j++)   
                     {   
                         counts++;
-                        // 四个参数分别为图像起点坐标和宽高   
-                        // 即: CropImageFilter(int x,int y,int width,int height)   
+                        // need 4 params for image coordinates and size
+                        // CropImageFilter(int x,int y,int width,int height)   
                         cropFilter = new CropImageFilter(j * destWidth, i *  destHeight, destWidth, destHeight);   
                         img = Toolkit.getDefaultToolkit().createImage(   
                                         new FilteredImageSource(image.getSource(), cropFilter));   
@@ -365,14 +365,14 @@ public class Player
 //                        
 //                        BufferedImage tag = new BufferedImage(destWidth, destHeight, BufferedImage.TYPE_INT_RGB);   
 //                        Graphics g = tag.getGraphics();   
-//                        g.drawImage(img, 0, 0, null); // 绘制缩小后的图   
+//                        g.drawImage(img, 0, 0, null); // Drawing after cropping  
 //                        g.dispose();   
-//                        // 输出为文件  
+//                        // output file
 //                        dir = descDir + "cut_image_" + i + "_" + j + ".jpg";
 //                        File f = new File(dir);
 //                        ImageIO.write(tag, "JPEG",f);
 //                        System.out.println(dir);
-//                        ImageUtils.pressText("水印",dir,"宋体",1,1,25,10,10);
+//                        ImageUtils.pressText("font",dir,"Times New Roman",1,1,25,10,10);
                     }   
                 }   
                 

@@ -584,38 +584,38 @@ public class Battleship extends JFrame
 								case 1:	{											
 											if (battleships==0){
 											players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
-												battleships++;
+battleships++;
 											}
 										}
 								break;
 								case 2:	{								
 											if (subs==0){								
 											players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
-												subs++;
+subs++;
 											}
 										}
 								break;
 								case 3:	{									
 											if (destroyers==0){
 											players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
-												destroyers++;
+destroyers++;
 											}
 										}
 							break;
 							case 4:	{								
 										if (patrols==0){
 										players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
-											patrols++;
+patrols++;
 										}
 									}
 							break;							
 						}	
-						//players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));//display ship's image here																									
-						break outer;						
+																								
+players[you].getBoats(sindex).placeship();						break outer;						
 					}					
 				}
 			}			
-			players[you].getBoats(sindex).placeship();
+			//players[you].getBoats(sindex).placeship();
 			}						
 		}
     }
@@ -1123,7 +1123,7 @@ public class Battleship extends JFrame
 				d.remove(input);	
                                 
                                 //players[you].
-				b.add(players[you].getMyBoard(),BorderLayout.WEST);//important 在此处添加
+				b.add(players[you].getMyBoard(),BorderLayout.WEST);//important add here
                                 
 				ready=1;	
 				c.add(autoBoard(enemy,you),BorderLayout.EAST);													
@@ -1131,7 +1131,7 @@ public class Battleship extends JFrame
 				if (!selectedValue.equals("Online"))
 					whoGoesFirst();						
 				pack();
-				repaint();				//就在此处刷新 important						
+				repaint();				//refreshed here important						
 			}
 		}	
 	}
