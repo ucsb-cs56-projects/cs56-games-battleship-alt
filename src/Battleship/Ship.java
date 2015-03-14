@@ -227,9 +227,9 @@ public class Ship
 					}
 			break;							
 		}			
-		if ((Battleship.getW()>0)&&(Battleship.getA()>0)
-			&&(Battleship.getS()>0)&&(Battleship.getT()>0)
-		&&(Battleship.getE()>0)&&(!this.invalid))				
+		if ((Battleship.getCarriers()>0)&&(Battleship.getBattleships()>0)
+			&&(Battleship.getSubs()>0)&&(Battleship.getDestroyers()>0)
+		&&(Battleship.getPatrols()>0)&&(!this.invalid))				
 		{	
 			if ((!Battleship.getPlayers(Battleship.getYou()).getBoats(0).invalid)&&(!Battleship.getPlayers(Battleship.getYou()).getBoats(1).invalid)&&(!Battleship.getPlayers(Battleship.getYou()).getBoats(2).invalid)
 				&&(!Battleship.getPlayers(Battleship.getYou()).getBoats(3).invalid)&&(!Battleship.getPlayers(Battleship.getYou()).getBoats(4).invalid))

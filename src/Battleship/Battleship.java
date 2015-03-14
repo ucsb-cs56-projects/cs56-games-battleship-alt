@@ -10,7 +10,9 @@ import java.io.*;
 import java.net.*;
 
 public class Battleship extends JFrame
-{		
+	{
+	
+			
 	private static JButton ok = new JButton("OK"),//closes stats menu
 						   done =new JButton("Done");//closes options menu
 	private static JFrame statistics= new JFrame("Statistics"),//holds stats
@@ -20,8 +22,12 @@ public class Battleship extends JFrame
 	private static JPanel stats=new JPanel(),//used for stats menu
 						  opts,//used for options menu
 						  inputpanel;//for manually inputting ships
-	private static Container b,c,d;//board and input panel 
+	private static Container b,c,d;          //board and input panel 
 	private JPanel input;//input bar	
+	//static Image logoImage = (new ImageIcon("graphics/logo.gif")).getImage();
+
+	//static Image logoImage = (new ImageIcon("graphics/logo.gif")).getImage();
+
 	private static JMenuItem m,pvp,pvc,cvc,pvpc;//menu items	
 	private static String[] cletters = {" ","A","B","C","D","E","F","G","H","I","J"},
 	//array of letters used for combo boxes
@@ -37,6 +43,7 @@ public class Battleship extends JFrame
 					 first={"Player 1", "Player 2", "Random"};//used for options
 	private JComboBox cshi = new JComboBox(ships),//ships
 					  cdir = new JComboBox(direction);//directions
+	
 	private static JComboBox aiLevel=new JComboBox(level),
 						     shipLayout=new JComboBox(layout),
 							 shipColor=new JComboBox(colors),
@@ -55,8 +62,8 @@ public class Battleship extends JFrame
 				sindex=0,//stores index of array
 				dindex=0;//direction	
 	private static Player players[]=new Player[2];
-	private static JButton deploy=new JButton("GEGIN");
-	private static int w=0,a=0,s=0,t=0,e=0;//counters to track the use of all ships
+	private static JButton deploy=new JButton("BEGIN");
+	private static int carriers=0,battleships=0,subs=0,destroyers=0,patrols=0;//counters to track the use of all ships
 	private static String[][] shiphit=new String[10][10];
 	private static String user,user2;
 	private static Color[] color={Color.cyan,Color.green,Color.yellow,Color.magenta,
@@ -72,7 +79,7 @@ public class Battleship extends JFrame
 		setTitle("WELCOME TO BATTLESHIP!!!!");		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setJMenuBar(createMenuBar());
-		setResizable(false);			
+		//setResizable(false);			
 		
 		//gets user to input name
 //		user=JOptionPane.showInputDialog("Please Enter your name.");		
@@ -100,8 +107,10 @@ public class Battleship extends JFrame
 		c=getContentPane();
 		d = getContentPane();
 		inputpanel=shipinput();
-		d.add(inputpanel,BorderLayout.NORTH);			
-		pack();		
+		d.add(inputpanel,BorderLayout.WEST);			
+		pack();
+		//setSize( 900,600);
+		
 		setVisible(true);
 		
 	}	
@@ -185,33 +194,33 @@ public class Battleship extends JFrame
 	
 	
 	//variable that determines whether or not a carrier has been placed
-	public static int getW()
+	public static int getCarriers()
 	{
-		return w;	
+		return carriers;	
 	}
 	
 	//variable that determines whether or not a battleship has been placed
-	public static int getA()
+	public static int getBattleships()
 	{
-		return a;	
+		return battleships;	
 	}
 	
 	//variable that determines whether or not a submarine has been placed
-	public static int getS()
+	public static int getSubs()
 	{
-		return s;	
+		return subs;	
 	}
 	
 	//variable that determines whether or not a destroyer has been placed
-	public static int getT()
+	public static int getDestroyers()
 	{
-		return t;	
+		return destroyers;	
 	}
 	
 	//variable that determines whether or not a patrol boat has been placed
-	public static int getE()
+	public static int getPatrols()
 	{
-		return e;	
+		return patrols;	
 	}		
 	
 	public static int getReady()
@@ -357,6 +366,9 @@ public class Battleship extends JFrame
 	public JPanel shipinput()
 	{
 		input= new JPanel();
+		input.setBackground(Color.black);
+		input.setLayout( new BoxLayout(input,BoxLayout.Y_AXIS));
+
 		mbar.setText("Select a ship, its front position and direction.");
 		mbar.setFont(new Font("Courier New", Font.BOLD, 14));
 		mbar.setEditable(false);
@@ -371,10 +383,19 @@ public class Battleship extends JFrame
 		cdir.addActionListener(new DirectListener());	
 		input.add(cdir);
 		title = BorderFactory.createTitledBorder("Direction");
-		cdir.setBorder(title);		
+		cdir.setBorder(title);	
+		
+			
+		//static Image logoImage = (new ImageIcon("graphics/logo.gif")).getImage();
+		ImageIcon logoImage = new ImageIcon("graphics/logo.gif");
+
+		input.add(new JLabel(logoImage));
+
 		deploy.setEnabled(false);
 		deploy.addActionListener(new DeployListener());
 		input.add(deploy);//deploy is the key of Begin
+		
+		
 		return input;
 	}	
 	
@@ -382,6 +403,8 @@ public class Battleship extends JFrame
 	public JPanel setBoard(int n)
 	{
 		players[n].setMyBoard(new JPanel(new GridLayout(11,11)));//panel to store board		
+		//players[n].setMyBoard().setBackground(Color.red);
+
 		JTextField k;		
 		for (i=0;i<11;i++)
 		{			
@@ -511,7 +534,7 @@ public class Battleship extends JFrame
 				players[you].setBoats(sindex,boat);
                                 players[you].paintShip(boat);
 				players[you].getBoats(sindex).placeship();			
-			}							
+			}			
 		}
 	}			
 			
@@ -552,37 +575,47 @@ public class Battleship extends JFrame
 							switch (sindex)
 							{
 								case 0:	{											
-											if (w==0)
-												w++;														
+											if (carriers==0){
+											players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
+												carriers++;
+											}
 										}
 								break;						
 								case 1:	{											
-											if (a==0)
-												a++;														
+											if (battleships==0){
+											players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
+battleships++;
+											}
 										}
 								break;
 								case 2:	{								
-											if (s==0)								
-												s++;
+											if (subs==0){								
+											players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
+subs++;
+											}
 										}
 								break;
 								case 3:	{									
-											if (t==0)
-												t++;													
+											if (destroyers==0){
+											players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
+destroyers++;
+											}
 										}
 							break;
 							case 4:	{								
-										if (e==0)
-											e++;															
+										if (patrols==0){
+										players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));
+patrols++;
+										}
 									}
 							break;							
 						}	
-						players[you].setBoats(sindex,new Ship(ships[sindex],dindex,length,i,j));//display ship's image here																									
-						break outer;						
+																								
+players[you].getBoats(sindex).placeship();						break outer;						
 					}					
 				}
 			}			
-			players[you].getBoats(sindex).placeship();
+			//players[you].getBoats(sindex).placeship();
 			}						
 		}
     }
@@ -812,7 +845,7 @@ public class Battleship extends JFrame
 						{
 							b.add(setBoard(you),BorderLayout.CENTER);							
 							deploy.setEnabled(false);
-							d.add(inputpanel,BorderLayout.NORTH);					
+							d.add(inputpanel,BorderLayout.WEST);					
 						}
 						else
 						{
@@ -887,7 +920,7 @@ public class Battleship extends JFrame
 					{
 						b.add(setBoard(you),BorderLayout.CENTER);							
 						deploy.setEnabled(false);
-						d.add(inputpanel,BorderLayout.NORTH);					
+						d.add(inputpanel,BorderLayout.WEST);					
 					}
 					else
 					{
@@ -1082,15 +1115,15 @@ public class Battleship extends JFrame
 			JOptionPane.YES_NO_OPTION);
 			if (r==0)
 			{	
-				w=0;
-				a=0;
-				s=0;
-				t=0;
-				e=0;									
+				carriers=0;
+				battleships=0;
+				subs=0;
+				destroyers=0;
+				patrols=0;									
 				d.remove(input);	
                                 
                                 //players[you].
-				b.add(players[you].getMyBoard(),BorderLayout.WEST);//important 在此处添加
+				b.add(players[you].getMyBoard(),BorderLayout.WEST);//important add here
                                 
 				ready=1;	
 				c.add(autoBoard(enemy,you),BorderLayout.EAST);													
@@ -1098,7 +1131,7 @@ public class Battleship extends JFrame
 				if (!selectedValue.equals("Online"))
 					whoGoesFirst();						
 				pack();
-				repaint();				//就在此处刷新 important						
+				repaint();				//refreshed here important						
 			}
 		}	
 	}
@@ -1237,7 +1270,7 @@ public class Battleship extends JFrame
 						players[enemy]=new Player ("Computer");					
 						b.add(gui.setBoard(you),BorderLayout.CENTER);					
 						inputpanel=gui.shipinput();
-						d.add(inputpanel,BorderLayout.NORTH);			
+						d.add(inputpanel,BorderLayout.WEST);			
 						gui.pack();		
 						gui.repaint();
 					}					
@@ -1248,3 +1281,4 @@ public class Battleship extends JFrame
 		}		//System.out.println("okay");		
 	}
 }	
+
